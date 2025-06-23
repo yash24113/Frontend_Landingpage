@@ -301,7 +301,7 @@ export default function CityProductPage() {
     <>
       <Head>
         <title>
-          {`Amrita Global Enterprises | Premium ${capitalizeFirst(
+          {`YASH Global Enterprises | Premium ${capitalizeFirst(
             product
           )} in ${capitalizeFirst(city)}`}
         </title>
@@ -327,23 +327,10 @@ export default function CityProductPage() {
         <div className="my-4 flex justify-center">
           <select
             value={product}
-            onChange={async (e) => {
+            onChange={(e) => {
               const selectedProduct = e.target.value;
-              // Find the slug for the selected product
               const selectedProductObj = products.find(
                 (prod) => prod.name === selectedProduct
-              );
-              const productSlug = selectedProductObj ? selectedProductObj.slug : "fabric";
-              // Find the slug for the current city
-              const currentLocationObj = locations.find(
-                (loc) => loc.name === city
-              );
-              const citySlugForUrl = currentLocationObj ? currentLocationObj.slug : "isanpur";
-              // Update the URL
-              await router.push(
-                `/${citySlugForUrl}/${productSlug}`,
-                undefined,
-                { shallow: true }
               );
               setProduct(selectedProduct);
               setDescription(selectedProductObj?.description || "");
