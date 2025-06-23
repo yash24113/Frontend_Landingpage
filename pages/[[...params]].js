@@ -14,7 +14,7 @@ export default function CityProductPage() {
   const router = useRouter();
   const { params } = router.query;
 
-  const [city, setCity] = useState("Iscon");
+  const [city, setCity] = useState("Paldi");
   const [product, setProduct] = useState("Fabric");
   const [locations, setLocations] = useState([]);
   const [products, setProducts] = useState([]);
@@ -120,7 +120,7 @@ export default function CityProductPage() {
             if (locationBySlugName && locationBySlugName.name) {
               setCity(locationBySlugName.name);
             } else {
-              setCity("Iscon"); // Default fallback
+              setCity("Paldi"); // Default fallback
             }
           }
 
@@ -154,19 +154,19 @@ export default function CityProductPage() {
             if (locationBySlugName && locationBySlugName.name) {
               setCity(locationBySlugName.name);
             } else {
-              setCity("Iscon"); // Default fallback if slug not matched
+              setCity("Paldi"); // Default fallback if slug not matched
             }
           }
           setProduct("Fabric"); // Default product
           setDescription("Premium fabric solutions for your business needs");
         } else {
           // Default values
-          setCity("Iscon");
+          setCity("Paldi");
           setProduct("Fabric");
           setDescription("Premium fabric solutions for your business needs");
         }
       } catch (err) {
-        setCity("Iscon");
+        setCity("Paldi");
         setProduct("Fabric");
         setDescription("Premium fabric solutions for your business needs");
       }
