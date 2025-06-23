@@ -38,7 +38,7 @@ export default function CityProductPage() {
       label: "Name",
       name: "name",
       type: "text",
-      placeholder: "Enter your name",
+      placeholder: "Enter your Name",
     },
     {
       label: "Email",
