@@ -14,7 +14,7 @@ export default function CityProductPage() {
   const router = useRouter();
   const { params } = router.query;
 
-  const [city, setCity] = useState("Paldi");
+  const [city, setCity] = useState("Isanpur");
   const [product, setProduct] = useState("Fabric");
   const [locations, setLocations] = useState([]);
   const [products, setProducts] = useState([]);
@@ -120,7 +120,7 @@ export default function CityProductPage() {
             if (locationBySlugName && locationBySlugName.name) {
               setCity(locationBySlugName.name);
             } else {
-              setCity("Paldi"); // Default fallback
+              setCity("Isanpur"); // Default fallback
             }
           }
 
@@ -154,19 +154,19 @@ export default function CityProductPage() {
             if (locationBySlugName && locationBySlugName.name) {
               setCity(locationBySlugName.name);
             } else {
-              setCity("Paldi"); // Default fallback if slug not matched
+              setCity("Isanpur"); // Default fallback if slug not matched
             }
           }
           setProduct("Fabric"); // Default product
           setDescription("Premium fabric solutions for your business needs");
         } else {
           // Default values
-          setCity("Paldi");
+          setCity("Isanpur");
           setProduct("Fabric");
           setDescription("Premium fabric solutions for your business needs");
         }
       } catch (err) {
-        setCity("Paldi");
+        setCity("Isanpur");
         setProduct("Fabric");
         setDescription("Premium fabric solutions for your business needs");
       }
@@ -338,10 +338,10 @@ export default function CityProductPage() {
               const currentLocationObj = locations.find(
                 (loc) => loc.name === city
               );
-              const citySlug = currentLocationObj ? currentLocationObj.slug : "paldi";
+              const citySlugForUrl = currentLocationObj ? currentLocationObj.slug : "isanpur";
               // Update the URL
               await router.push(
-                `/${citySlug}/${productSlug}`,
+                `/${citySlugForUrl}/${productSlug}`,
                 undefined,
                 { shallow: true }
               );
