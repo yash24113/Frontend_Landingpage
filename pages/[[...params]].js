@@ -183,7 +183,7 @@ export default function CityProductPage() {
       image:
         "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=1200&q=80",
       title: "Premium Denim Collection",
-      description: "Wholesale denim fabrics for manufacturers and brands",
+      description: "Wholesale denim fabrics for manufacturers and brands YASH",
     },
     {
       image:
