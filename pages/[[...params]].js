@@ -14,7 +14,7 @@ export default function CityProductPage() {
   const router = useRouter();
   const { params } = router.query;
 
-  const [city, setCity] = useState("Iscon");
+  const [city, setCity] = useState("Paldi");
   const [product, setProduct] = useState("Fabric");
   const [locations, setLocations] = useState([]);
   const [products, setProducts] = useState([]);
@@ -120,7 +120,7 @@ export default function CityProductPage() {
             if (locationBySlugName && locationBySlugName.name) {
               setCity(locationBySlugName.name);
             } else {
-              setCity("Iscon"); // Default fallback
+              setCity("Paldi"); // Default fallback
             }
           }
 
@@ -154,19 +154,19 @@ export default function CityProductPage() {
             if (locationBySlugName && locationBySlugName.name) {
               setCity(locationBySlugName.name);
             } else {
-              setCity("Iscon"); // Default fallback if slug not matched
+              setCity("Paldi"); // Default fallback if slug not matched
             }
           }
           setProduct("Fabric"); // Default product
           setDescription("Premium fabric solutions for your business needs");
         } else {
           // Default values
-          setCity("Iscon");
+          setCity("Paldi");
           setProduct("Fabric");
           setDescription("Premium fabric solutions for your business needs");
         }
       } catch (err) {
-        setCity("Iscon");
+        setCity("Paldi");
         setProduct("Fabric");
         setDescription("Premium fabric solutions for your business needs");
       }
@@ -322,6 +322,41 @@ export default function CityProductPage() {
 
       <div className="min-h-screen bg-white text-gray-800">
         <Header locations={locations} products={products} />
+
+        {/* Product Dropdown - below header */}
+        <div className="my-4 flex justify-center">
+          <select
+            value={product}
+            onChange={async (e) => {
+              const selectedProduct = e.target.value;
+              // Find the slug for the selected product
+              const selectedProductObj = products.find(
+                (prod) => prod.name === selectedProduct
+              );
+              const productSlug = selectedProductObj ? selectedProductObj.slug : "fabric";
+              // Find the slug for the current city
+              const currentLocationObj = locations.find(
+                (loc) => loc.name === city
+              );
+              const citySlug = currentLocationObj ? currentLocationObj.slug : "paldi";
+              // Update the URL
+              await router.push(
+                `/${citySlug}/${productSlug}`,
+                undefined,
+                { shallow: true }
+              );
+              setProduct(selectedProduct);
+              setDescription(selectedProductObj?.description || "");
+            }}
+            className="border rounded px-4 py-2"
+          >
+            {products.map((prod) => (
+              <option key={prod.slug} value={prod.name}>
+                {prod.name}
+              </option>
+            ))}
+          </select>
+        </div>
 
         {/* Sticky WhatsApp Button */}
         <a

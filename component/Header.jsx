@@ -77,7 +77,7 @@ export default function Header({ locations = [], products = [] }) {
               }}
             />
             <span className="text-xl font-bold gradient-text">
-              Amrita Global
+              Amrita Global Enterprises
             </span>
           </a>
 
