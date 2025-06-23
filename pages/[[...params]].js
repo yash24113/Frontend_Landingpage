@@ -91,8 +91,8 @@ export default function CityProductPage() {
       setLoading(true);
       try {
         const [locationRes, productRes] = await Promise.all([
-          fetch("http://localhost:5000/api/locations"),
-          fetch("http://localhost:5000/api/products"),
+          fetch("https://langingpage-production-f27f.up.railway.app/api/locations"),
+          fetch("https://langingpage-production-f27f.up.railway.app/api/products"),
         ]);
         const locationData = await locationRes.json();
         const productData = await productRes.json();
@@ -253,7 +253,7 @@ export default function CityProductPage() {
   };
 
   const saveInquiryStep = async (data, step) => {
-    const res = await fetch('http://localhost:5000/api/inquiries', {
+    const res = await fetch('https://langingpage-production-f27f.up.railway.app/api/inquiries', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...data, step, id: inquiryId }),
